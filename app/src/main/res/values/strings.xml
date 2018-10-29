@@ -9,7 +9,7 @@
     <string name="first_name">FIRSTNAME</string>
     <string name="last_name">LASTNAME</string>
     <string name="str_end">The End</string>
-    <string name="str_error">Error Occured</string>
+    <string name="str_error">Error Occured! pull to refresh.</string>
     <string name="str_loading">Loading</string>
     <string name="str_filter">Fiter : Every 3rd item removed!</string>
     <string name="str_unfilter">Fiter Cancelled : Every Item is There!</string>
