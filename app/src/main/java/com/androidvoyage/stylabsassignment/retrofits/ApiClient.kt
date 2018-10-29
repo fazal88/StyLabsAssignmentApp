@@ -53,11 +53,16 @@ object ApiClient {
         // TODO Implement a fallback mechanism if external cache directory is not available
         var cache: okhttp3.Cache? = null
         try {
-            cache = okhttp3.Cache(httpCacheDir!!, httpCacheSize)
+            if (httpCacheDir != null) {
+                cache = okhttp3.Cache(httpCacheDir!!, httpCacheSize)
+            }
         } catch (t: Throwable) {
+            cache = null
         }
-        httpClient.cache(cache)
 
+        if (cache != null) {
+            httpClient.cache(cache)
+        }
         //**//**//**//** Interceptors (Order is important) **//**//**//**//*
         // Request Header interceptor - Adds the request headers and tests for error codes on response
         httpClient.interceptors().add(HeaderInterceptor())

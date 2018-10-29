@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.androidvoyage.stylabsassignment.Presenter.GoogleSignInPresenter
 import com.androidvoyage.stylabsassignment.activities.SignInActivity
 import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
@@ -17,8 +18,10 @@ class GoogleSignInInteractor(signInView: SignInActivity) : GoogleSignInPresenter
 
     init {
         signInView.showProgressBar(View.GONE)
-        val account = com.google.android.gms.auth.api.signin.GoogleSignIn.getLastSignedInAccount(signInView)
-        signInView.gotoMain(account!!)
+        val account = GoogleSignIn.getLastSignedInAccount(signInView)
+        if (account != null) {
+            signInView.gotoMain(account)
+        }
     }
 
      override fun signIn(signInView: SignInActivity) {
@@ -27,7 +30,7 @@ class GoogleSignInInteractor(signInView: SignInActivity) : GoogleSignInPresenter
                 .requestEmail()
                 .build()
 
-        val mGoogleSignInClient = com.google.android.gms.auth.api.signin.GoogleSignIn.getClient(signInView, gso)
+        val mGoogleSignInClient = GoogleSignIn.getClient(signInView, gso)
 
         val signInIntent = mGoogleSignInClient.signInIntent
         signInView.startActivityForResult(signInIntent, RC_SIGN_IN)
