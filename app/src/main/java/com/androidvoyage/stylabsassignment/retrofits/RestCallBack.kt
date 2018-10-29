@@ -1,6 +1,7 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.retrofits
 
 import android.text.TextUtils
+import com.androidvoyage.stylabsassignment.utils.LogUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

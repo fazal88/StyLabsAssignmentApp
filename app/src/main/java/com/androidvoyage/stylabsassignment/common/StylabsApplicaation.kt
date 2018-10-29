@@ -1,4 +1,4 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.common
 
 import android.app.Application
 import android.content.Context

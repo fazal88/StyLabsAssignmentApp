@@ -1,4 +1,4 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.models
 
 import android.os.Parcel
 import android.os.Parcelable

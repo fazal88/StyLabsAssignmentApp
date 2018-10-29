@@ -1,5 +1,6 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.views
 
+import com.androidvoyage.stylabsassignment.models.UserInfo
 import java.util.ArrayList
 
 interface RecycleMainView {
@@ -10,7 +11,7 @@ interface RecycleMainView {
 
     fun updateList(list: ArrayList<UserInfo>)
 
-    fun listEnded(inProgress: Boolean, msg: String)
+    fun listEnded(visible: Int, msg: String)
 
     fun setLastPage(lastPage: Boolean)
 

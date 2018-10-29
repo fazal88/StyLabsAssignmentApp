@@ -1,7 +1,8 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
+import com.androidvoyage.stylabsassignment.R
 
 open class TransitionActivity : AppCompatActivity() {
     override fun finish() {

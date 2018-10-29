@@ -1,4 +1,4 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.retrofits
 
 import android.support.annotation.IntDef
 import java.lang.annotation.Retention

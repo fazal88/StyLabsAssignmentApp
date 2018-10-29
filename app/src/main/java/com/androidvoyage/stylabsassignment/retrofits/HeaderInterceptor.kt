@@ -1,6 +1,7 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.retrofits
 
 import android.text.TextUtils
+import com.androidvoyage.stylabsassignment.utils.LogUtils
 import okhttp3.*
 import java.io.IOException
 import java.net.SocketTimeoutException

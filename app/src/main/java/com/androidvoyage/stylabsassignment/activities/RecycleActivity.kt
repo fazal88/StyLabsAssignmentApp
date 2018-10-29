@@ -1,4 +1,4 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.activities
 
 import android.content.Context
 import android.content.Intent
@@ -15,7 +15,12 @@ import android.widget.ProgressBar
 import android.widget.TextView
 
 import com.androidvoyage.stylabsassignment.Presenter.RecycleListPresenter
+import com.androidvoyage.stylabsassignment.R
+import com.androidvoyage.stylabsassignment.views.RecycleMainView
+import com.androidvoyage.stylabsassignment.models.UserInfo
+import com.androidvoyage.stylabsassignment.adapters.RCVAdapter
 import com.androidvoyage.stylabsassignment.interactors.RecycleInteractor
+import com.androidvoyage.stylabsassignment.listeners.PaginationScrollListener
 
 import java.util.ArrayList
 
@@ -100,16 +105,12 @@ class RecycleActivity : TransitionActivity(), View.OnClickListener, RecycleMainV
         adapter!!.filteredList(filterData)
     }
 
-    override fun updateList(data: ArrayList<UserInfo>) {
-        adapter!!.addAll(data)
+    override fun updateList(list: ArrayList<UserInfo>) {
+        adapter!!.addAll(list)
     }
 
-    override fun listEnded(inProgress: Boolean, msg: String) {
-        if (inProgress) {
-            pbLoading!!.visibility = View.VISIBLE
-        } else {
-            pbLoading!!.visibility = View.GONE
-        }
+    override fun listEnded(visible: Int, msg: String) {
+        pbLoading!!.visibility = visible
         tvLoading!!.text = msg
     }
 

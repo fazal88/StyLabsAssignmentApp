@@ -1,6 +1,8 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.retrofits
 
-import java.io.File
+import com.androidvoyage.stylabsassignment.BuildConfig
+import com.androidvoyage.stylabsassignment.common.StylabsApplication
+import com.androidvoyage.stylabsassignment.utils.MiscUtils
 import java.util.concurrent.TimeUnit
 
 import okhttp3.OkHttpClient
@@ -30,7 +32,7 @@ object ApiClient {
             BASE_URL
         }
         set(url) {
-            ApiClient.BASE_URL = (if (url.startsWith("http")) "" else "http://") + url
+            BASE_URL = (if (url.startsWith("http")) "" else "http://") + url
         }
 
     init {
@@ -51,16 +53,10 @@ object ApiClient {
         // TODO Implement a fallback mechanism if external cache directory is not available
         var cache: okhttp3.Cache? = null
         try {
-            if (httpCacheDir != null) {
-                cache = okhttp3.Cache(httpCacheDir!!, httpCacheSize)
-            }
+            cache = okhttp3.Cache(httpCacheDir!!, httpCacheSize)
         } catch (t: Throwable) {
-            cache = null
         }
-
-        if (cache != null) {
-            httpClient.cache(cache)
-        }
+        httpClient.cache(cache)
 
         //**//**//**//** Interceptors (Order is important) **//**//**//**//*
         // Request Header interceptor - Adds the request headers and tests for error codes on response

@@ -1,5 +1,6 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.retrofits
 
+import com.androidvoyage.stylabsassignment.models.StylabResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -2,49 +2,51 @@ package com.androidvoyage.stylabsassignment.interactors
 
 
 import android.content.Intent
+import android.view.View
 import android.widget.Toast
 import com.androidvoyage.stylabsassignment.Presenter.GoogleSignInPresenter
-import com.androidvoyage.stylabsassignment.SignInActivity
+import com.androidvoyage.stylabsassignment.activities.SignInActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.config.GservicesValue.init
 
 /**
  * Created by Operator on 26.08.2016.
  */
-class GoogleSignIn(sigInView: SignInActivity) : GoogleSignInPresenter {
+class GoogleSignInInteractor(signInView: SignInActivity) : GoogleSignInPresenter {
 
     init {
-        val account = com.google.android.gms.auth.api.signin.GoogleSignIn.getLastSignedInAccount(sigInView)
-        if (account != null) {
-            sigInView.gotoMain(account!!)
-        }
+        signInView.showProgressBar(View.GONE)
+        val account = com.google.android.gms.auth.api.signin.GoogleSignIn.getLastSignedInAccount(signInView)
+        signInView.gotoMain(account!!)
     }
 
-     override fun signIn(sigInView: SignInActivity) {
+     override fun signIn(signInView: SignInActivity) {
+         signInView.showProgressBar(View.VISIBLE)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
 
-        val mGoogleSignInClient = com.google.android.gms.auth.api.signin.GoogleSignIn.getClient(sigInView, gso)
+        val mGoogleSignInClient = com.google.android.gms.auth.api.signin.GoogleSignIn.getClient(signInView, gso)
 
         val signInIntent = mGoogleSignInClient.signInIntent
-        sigInView.startActivityForResult(signInIntent, RC_SIGN_IN)
+        signInView.startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-     override fun onActivityResult(sigInView: SignInActivity, requestCode: Int, resultCode: Int, data: Intent) {
+     override fun onActivityResult(signInView: SignInActivity, requestCode: Int, resultCode: Int, data: Intent) {
         if (requestCode == RC_SIGN_IN) {
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
             if (!result.isSuccess) {
-                Toast.makeText(sigInView, "Something went wrong! Try again.", Toast.LENGTH_SHORT).show()
+                signInView.showProgressBar(View.GONE)
+                Toast.makeText(signInView, "Something went wrong! Try again.", Toast.LENGTH_SHORT).show()
                 return
             }
-            handleSignInResult(result.signInAccount, sigInView)
+            handleSignInResult(result.signInAccount, signInView)
         }
     }
 
     private fun handleSignInResult(result: GoogleSignInAccount?, signInView: SignInActivity) {
+        signInView.showProgressBar(View.GONE)
         signInView.gotoMain(result!!)
     }
 

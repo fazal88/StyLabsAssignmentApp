@@ -1,6 +1,7 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.utils
 
 import android.util.Log
+import com.androidvoyage.stylabsassignment.BuildConfig
 
 object LogUtils {
     private val LOG_PREFIX = "CD_"

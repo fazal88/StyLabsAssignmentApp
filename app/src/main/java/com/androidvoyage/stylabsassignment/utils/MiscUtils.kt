@@ -1,4 +1,4 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.utils
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

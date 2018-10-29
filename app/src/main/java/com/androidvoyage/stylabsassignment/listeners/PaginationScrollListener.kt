@@ -1,4 +1,4 @@
-package com.androidvoyage.stylabsassignment
+package com.androidvoyage.stylabsassignment.listeners
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView

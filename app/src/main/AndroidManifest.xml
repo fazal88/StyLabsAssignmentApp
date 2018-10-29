@@ -11,15 +11,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".StylabsApplication"
+        android:name=".common.StylabsApplication"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RecycleActivity"
+            android:name=".activities.RecycleActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".SignInActivity"
+            android:name=".activities.SignInActivity"
             android:label="@string/title_activity_sign_in"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +31,7 @@
         </activity>
 
         <provider
-            android:name=".GenericFileProvider"
+            android:name=".utils.GenericFileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">

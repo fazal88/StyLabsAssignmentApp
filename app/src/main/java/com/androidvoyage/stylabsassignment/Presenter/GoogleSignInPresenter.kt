@@ -1,7 +1,7 @@
 package com.androidvoyage.stylabsassignment.Presenter
 
 import android.content.Intent
-import com.androidvoyage.stylabsassignment.SignInActivity
+import com.androidvoyage.stylabsassignment.activities.SignInActivity
 
 
 interface GoogleSignInPresenter {

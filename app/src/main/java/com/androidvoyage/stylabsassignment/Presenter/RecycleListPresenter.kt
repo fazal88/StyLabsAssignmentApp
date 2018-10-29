@@ -1,7 +1,7 @@
 package com.androidvoyage.stylabsassignment.Presenter
 
 import android.view.View
-import com.androidvoyage.stylabsassignment.RecycleActivity
+import com.androidvoyage.stylabsassignment.activities.RecycleActivity
 
 
 interface RecycleListPresenter {
